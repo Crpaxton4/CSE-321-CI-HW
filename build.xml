@@ -14,8 +14,6 @@
     <path refid="classpath.base" />
   </path>
 
-  <target name="test" depends="run, clean" />
-
   <target name="compile">
     <mkdir dir="${main.build.dir}"/>
     <javac srcdir="${main.src.dir}" destdir="${main.build.dir}" includeantruntime="false">
@@ -30,28 +28,23 @@
     </javac>
     <echo message="Build done" />
   </target>
-   
-  <!-- Test and build all files  -->
-  <!-- To run this: use "ant" (default) or "ant run" -->
-  <target name="run" depends="build">
+
+  <target name="test" depends="build, clean">
     <junit printsummary="on" haltonfailure="yes">
         <classpath>
           <path refid="classpath.test" />
           <pathelement location="${test.build.dir}"/>
         </classpath>
-        <formatter type="brief" usefile="false" />
+        <!--formatter type="brief" usefile="false" /-->
         <batchtest>
             <fileset dir="${test.src.dir}" includes="**/*Test*.java" />
         </batchtest>
     </junit>
   </target>
-   
-  <!-- delete all class files -->
-  <!-- To run this: use "ant clean" -->
+
   <target name="clean">
     <delete>
         <fileset dir="${basedir}" includes="**/*.class" />
     </delete>
-    <echo message="clean done" />
   </target>
 </project>
