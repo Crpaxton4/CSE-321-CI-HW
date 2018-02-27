@@ -18,6 +18,6 @@ public class TestMain {
 		
 		int f = m.fib(n);
 		
-		assertEquals(f, 3)
+		assertEquals(f, 3);
 	}
 }
