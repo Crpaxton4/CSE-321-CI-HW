@@ -24,7 +24,7 @@
 	</target>
 
 	<target name="run" depends="build">
-		<junit printsummary="on" showoutput="true">
+		<junit printsummary="on" showoutput="true" enableTestListenerEvents="true">
 			
 			<classpath>
 				<path refid="project.resources" />
