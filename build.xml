@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
-<project name="CI" default="test">
-	<!--property name="main.build.dir" value="build/main" />
-	<property name="main.src.dir" value="src" />
-	<property name="test.build.dir" value="build/test" />
-	<property name="test.src.dir" value="test" /-->
-
-	<path id="classpath.base" />
+<project name="CI" >
+	
+	<!--path id="classpath.base" /-->
 
 	<path id="classpath.test">
 		<pathelement location="lib/junit-4.11.jar" />
@@ -19,7 +15,7 @@
 	<target name="compile">
 		<mkdir dir="build/main"/>
 		<javac srcdir="src" destdir="build/main" includeantruntime="false">
-			<classpath refid="classpath.base"/>
+			<classpath refid="classpath.test"/> <!-- test -> base -->
 		</javac>
 	</target>
 
