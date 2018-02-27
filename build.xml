@@ -1,38 +1,36 @@
 <?xml version="1.0"?>
 <project name="CI" >
-	
-	<!--path id="classpath.base" /-->
 
-	<path id="classpath.test">
+	<path id="project.resources">
 		<pathelement location="lib/junit-4.11.jar" />
 		<pathelement location="lib/hamcrest-core-1.3.jar" />
 		<pathelement location="build/main"/>
-		<!--path refid="classpath.base" /-->
+		
 	</path>
 
 	<target name="test" depends="run, clean" />
 
-	<target name="compile">
+	<target name="build">
 		<mkdir dir="build/main"/>
-		<javac srcdir="src" destdir="build/main" includeantruntime="false">
-			<classpath refid="classpath.test"/> <!-- test -> base -->
-		</javac>
-	</target>
-
-	<target name="build" depends="compile">
 		<mkdir dir="build/test"/>
-		<javac srcdir="test" destdir="build/test" includeantruntime="false">
-			<classpath refid="classpath.test"/>
+		
+		<javac srcdir="src" destdir="build/main" includeantruntime="false">
+			<classpath refid="project.resources"/>
 		</javac>
-		<echo message="Build done" />
+		<javac srcdir="test" destdir="build/test" includeantruntime="false">
+			<classpath refid="project.resources"/>
+		</javac>
+		
 	</target>
 
 	<target name="run" depends="build">
-		<junit printsummary="on" haltonfailure="yes">
+		<junit printsummary="on" showoutput="true">
+			
 			<classpath>
-				<path refid="classpath.test" />
+				<path refid="project.resources" />
 				<pathelement location="build/test"/>
 			</classpath>
+			
 			<batchtest>
 				<fileset dir="test" includes="**/*Test*.java" />
 			</batchtest>
