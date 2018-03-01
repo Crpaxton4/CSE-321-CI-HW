@@ -17,13 +17,13 @@ public class TestMain {
 		
 		assertEquals(0, fib(0));
 		
-		assertEquals(1, fib(1));
+		assertEquals(1, m.fib(1));
 		
-		assertEquals(3, fib(4));
+		assertEquals(3, m.fib(4));
 		
-		assertEquals(89, fib(11));
+		assertEquals(89, m.fib(11));
 		
-		assertEquals(6765, fib(20));
+		assertEquals(6765, m.fib(20));
 	}
 	
 	@Test
