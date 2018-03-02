@@ -6,15 +6,17 @@
 public class Main {
 	
 	public int fib(int n) {
-		
-		int[] memo = new int[n+1];
-		memo[0] = 0;
-		memo[1] = 1;
+		if(n == 0) {
+			return 0;
+		}
+		// n is guaranteed to be at least 1
+		int[] memo = new int[n+1]; // length = 2
+		memo[0] = 0; // OK: 0 <= memo.length-1
+		memo[1] = 1; // OK: 1 <= memo.length-1
 		
 		for(int i = 2; i <=n; i++) {
 			memo[i] = memo[i-1] + memo[i-2];
 		}
-		
 		return memo[n];
 	}
 	
