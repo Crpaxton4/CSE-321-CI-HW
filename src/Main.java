@@ -7,10 +7,6 @@ public class Main {
 	
 	public int fib(int n) {
 		
-		if(n == 0) {
-			return 0;
-		}
-		
 		int[] memo = new int[n+1];
 		memo[0] = 0;
 		memo[1] = 1;
